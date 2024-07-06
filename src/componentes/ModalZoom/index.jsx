@@ -35,7 +35,7 @@ const ModalZoom = ({ foto, aoFechar }) => {
         <>
             {foto && <>
                 <Overlay />
-                <DialogEstilizado open={!!foto} onClose={aoFechar}>
+                <DialogEstilizado open={!!foto} onClose={() => aoFechar()}>
                     <Imagem foto={foto} expandida={true} />
                     <form method="dialog">
                         <BotaoIcone formMethod="dialog">
