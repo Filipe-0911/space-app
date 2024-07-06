@@ -80,7 +80,7 @@ const App = () => {
         <MainContainer>
           <BarraLateral />
           <ConteudoDaGaleria>
-            <Banner texto="A galeria mais completa de fotos do espaço!" backgroundImage="../src/assets/banner.png" />
+            <Banner texto="A galeria mais completa de fotos do espaço!" backgroundImage="imagens/banner.png" />
             <Galeria
               aoFotoSelecionada={foto => setFotoSelecionada(foto)}
               fotos={fotosFiltradas}
