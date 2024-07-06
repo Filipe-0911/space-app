@@ -18,7 +18,7 @@ const DivGaleriaEstilizada = styled.div`
     gap: 1em;
 `
 
-const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
 
     return (
         <>
@@ -31,6 +31,7 @@ const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
                             aoZoomSolicitado={aoFotoSelecionada}
                             key={index}
                             foto={foto}
+                            aoAlternarFavorito={aoAlternarFavorito}
                         />)}
                     </DivGaleriaEstilizada>
                 </SecaoFluida>
