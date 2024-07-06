@@ -6,6 +6,7 @@ import Banner from "./componentes/Banner";
 import Galeria from "./componentes/Galeria";
 import fotos from "./fotos.json";
 import { useState } from "react";
+import ModalZoom from "./componentes/ModalZoom";
 
 const FundoGradiente = styled.div`background: linear-gradient(174.61deg,#041833 4.16%,#04244f 48%,#154580 96.76%); width:100%; min-height: 100vh;`;
 
@@ -28,6 +29,7 @@ const ConteudoDaGaleria = styled.section`
 
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
   return (
     <FundoGradiente>
@@ -38,11 +40,11 @@ const App = () => {
           <BarraLateral />
           <ConteudoDaGaleria>
             <Banner texto="A galeria mais completa de fotos do espaço!" backgroundImage="../src/assets/banner.png" />
-            <Galeria fotos={fotosDaGaleria}/>
+            <Galeria aoFotoSelecionada={foto => setFotoSelecionada(foto)} fotos={fotosDaGaleria}/>
           </ConteudoDaGaleria>
         </MainContainer>
       </AppContainer>
-
+      <ModalZoom foto={fotoSelecionada}/>
     </FundoGradiente>
   )
 }

@@ -15,23 +15,26 @@ const SecaoFluida = styled.section`
 const DivGaleriaEstilizada = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 1em;
 `
 
-const Galeria = ({ fotos = [] }) => {
-    
+const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+
     return (
         <>
-            <Tags/>
+            <Tags />
             <GaleriaContainer>
                 <SecaoFluida>
                     <TituloEstilizado>Navege pela galeria</TituloEstilizado>
                     <DivGaleriaEstilizada>
-                        {fotos.map((foto, index) => <Imagem key={index} foto={foto}/>)}
-                        
+                        {fotos.map((foto, index) => <Imagem
+                            aoZoomSolicitado={aoFotoSelecionada}
+                            key={index}
+                            foto={foto}
+                        />)}
                     </DivGaleriaEstilizada>
                 </SecaoFluida>
-                <Populares/>
+                <Populares />
 
             </GaleriaContainer>
         </>
