@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import search from '/imagens/search.png';
+import { useState } from "react";
 
 const ContainerEstilizado = styled.div`
     position: relative;
@@ -31,9 +32,10 @@ const IconeLupa = styled.img`
 `;
 
 const CampoTexto = (props) => {
+    const { aoDigitar } = props;
     return (
         <ContainerEstilizado>
-            <CampoTextoEstilizado placeholder="O que você procura?" {...props} />
+            <CampoTextoEstilizado onChange={(e) => aoDigitar(e)} placeholder="O que você procura?" />
             <IconeLupa src={search} alt="ícone de lupa" />
         </ContainerEstilizado>
     )

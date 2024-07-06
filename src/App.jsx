@@ -1,14 +1,19 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
 import Banner from "./componentes/Banner";
 import Galeria from "./componentes/Galeria";
 import fotos from "./fotos.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalZoom from "./componentes/ModalZoom";
+import tags from "./componentes/Galeria/Tags/tags.json"
 
-const FundoGradiente = styled.div`background: linear-gradient(174.61deg,#041833 4.16%,#04244f 48%,#154580 96.76%); width:100%; min-height: 100vh;`;
+const FundoGradiente = styled.div`
+  background: linear-gradient(174.61deg, #041833 4.16%, #04244f 48%, #154580 96.76%);
+  width: 100%;
+  min-height: 100vh;
+`;
 
 const AppContainer = styled.div`
   width: 1440px;
@@ -17,7 +22,7 @@ const AppContainer = styled.div`
 `;
 
 const MainContainer = styled.main`
-  display:flex;
+  display: flex;
   gap: 24px;
 `;
 
@@ -31,53 +36,47 @@ const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const [fotosFiltradas, setFotosFiltradas] = useState(fotosDaGaleria);
+  const [tagSelecionada, setTagSelecionada] = useState({ id: 0 });
+  const [valorInput, setValorInput] = useState('')
+
+  const aoDigitar = (evento) => {
+      setValorInput(() => evento.target.value)
+      let idTagInput = tags.find(tag => tag.titulo.toLowerCase().includes(valorInput.toLowerCase()));
+      
+      setTagSelecionada(idTagInput ? idTagInput : { id : 0 });
+      
+  }
+
+  useEffect(() => {
+    if (tagSelecionada.id === 0) {
+      setFotosFiltradas(fotosDaGaleria);
+    } else {
+      setFotosFiltradas(fotosDaGaleria.filter(foto => foto.tagId === tagSelecionada.id));
+    }
+  }, [tagSelecionada, fotosDaGaleria]);
 
   const filtrarPorTags = (tag) => {
-    if (tag.id === 0) {
-      return setFotosFiltradas(fotosDaGaleria.map(foto => {
-        return foto
-      }))
-    }
-    setFotosFiltradas(fotosDaGaleria.filter(foto => {
-      return foto.tagId === tag.id
-    }))
-
-  }
+    setTagSelecionada(tag);
+  };
 
   const aoAlternarFavorito = (foto) => {
-    if (foto.id === fotoSelecionada?.id) {
-      setFotoSelecionada(fotoSelecionada => {
-        return {
-          ...fotoSelecionada,
-          favorita: !fotoSelecionada.favorita
-        }
-      })
-      setFotosFiltradas(fotoSelecionada => {
-        return {
-          ...fotoSelecionada,
-          favorita: !fotoSelecionada.favorita
-        }
-      })
-    }
+    const novaFoto = {
+      ...foto,
+      favorita: !foto.favorita
+    };
     setFotosDaGaleria(fotosDaGaleria.map(fotoGaleria => {
-      return {
-        ...fotoGaleria,
-        favorita: fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita
-      }
-    }))
-    setFotosFiltradas(fotosFiltradas.map(fotoGaleria => {
-      return {
-        ...fotoGaleria,
-        favorita: fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita
-      }
-    }))
-  }
+      return fotoGaleria.id === foto.id ? novaFoto : fotoGaleria;
+    }));
+    setFotoSelecionada(fotoSelecionada => {
+      return fotoSelecionada?.id === foto.id ? novaFoto : fotoSelecionada;
+    });
+  };
 
   return (
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho aoDigitar={aoDigitar}/>
         <MainContainer>
           <BarraLateral />
           <ConteudoDaGaleria>
@@ -91,9 +90,13 @@ const App = () => {
           </ConteudoDaGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} aoFechar={() => setFotoSelecionada(null)} aoAlternarFavorito={aoAlternarFavorito} />
+      <ModalZoom
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
     </FundoGradiente>
-  )
-}
+  );
+};
 
-export default App
+export default App;

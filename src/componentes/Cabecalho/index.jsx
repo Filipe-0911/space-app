@@ -9,11 +9,11 @@ img {
     max-width:212px;
 }`
 
-const Cabecalho = () => {
+const Cabecalho = ({ aoDigitar }) => {
     return (
         <HeaderEstilizado>
             <img src="/imagens/logo.png" />
-            <CampoTexto/>
+            <CampoTexto aoDigitar={aoDigitar}/>
         </HeaderEstilizado>
     );
 }
