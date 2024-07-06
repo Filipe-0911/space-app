@@ -30,21 +30,45 @@ const ConteudoDaGaleria = styled.section`
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [fotosFiltradas, setFotosFiltradas] = useState(fotosDaGaleria);
+
+  const filtrarPorTags = (tag) => {
+    if (tag.id === 0) {
+      return setFotosFiltradas(fotosDaGaleria.map(foto => {
+        return foto
+      }))
+    }
+    setFotosFiltradas(fotosDaGaleria.filter(foto => {
+      return foto.tagId === tag.id
+    }))
+
+  }
 
   const aoAlternarFavorito = (foto) => {
     if (foto.id === fotoSelecionada?.id) {
       setFotoSelecionada(fotoSelecionada => {
         return {
           ...fotoSelecionada,
-          favorita : !fotoSelecionada.favorita
+          favorita: !fotoSelecionada.favorita
+        }
+      })
+      setFotosFiltradas(fotoSelecionada => {
+        return {
+          ...fotoSelecionada,
+          favorita: !fotoSelecionada.favorita
         }
       })
     }
-
     setFotosDaGaleria(fotosDaGaleria.map(fotoGaleria => {
       return {
         ...fotoGaleria,
-        favorita : fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita
+        favorita: fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita
+      }
+    }))
+    setFotosFiltradas(fotosFiltradas.map(fotoGaleria => {
+      return {
+        ...fotoGaleria,
+        favorita: fotoGaleria.id === foto.id ? !foto.favorita : fotoGaleria.favorita
       }
     }))
   }
@@ -58,11 +82,16 @@ const App = () => {
           <BarraLateral />
           <ConteudoDaGaleria>
             <Banner texto="A galeria mais completa de fotos do espaço!" backgroundImage="../src/assets/banner.png" />
-            <Galeria aoFotoSelecionada={foto => setFotoSelecionada(foto)} fotos={fotosDaGaleria} aoAlternarFavorito={aoAlternarFavorito} />
+            <Galeria
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)}
+              fotos={fotosFiltradas}
+              aoAlternarFavorito={aoAlternarFavorito}
+              aoFiltrarPorTag={filtrarPorTags}
+            />
           </ConteudoDaGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} aoFechar={() => setFotoSelecionada(null)} aoAlternarFavorito={aoAlternarFavorito}/>
+      <ModalZoom foto={fotoSelecionada} aoFechar={() => setFotoSelecionada(null)} aoAlternarFavorito={aoAlternarFavorito} />
     </FundoGradiente>
   )
 }

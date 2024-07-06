@@ -18,11 +18,11 @@ const DivGaleriaEstilizada = styled.div`
     gap: 1em;
 `
 
-const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito, aoFiltrarPorTag }) => {
 
     return (
         <>
-            <Tags />
+            <Tags aoFiltrarPorTag={aoFiltrarPorTag}/>
             <GaleriaContainer>
                 <SecaoFluida>
                     <TituloEstilizado>Navege pela galeria</TituloEstilizado>

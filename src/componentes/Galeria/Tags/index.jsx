@@ -32,11 +32,11 @@ const BotaoEstilizadoTag = styled.button`
     }
 `
 
-const Tags = () => {
+const Tags = ({ aoFiltrarPorTag }) => {
     return(
         <ContainerBotaoEstilizado>
             <p>Busque por tags:</p>
-            {tags.map(tag => <BotaoEstilizadoTag $ativo key={tag.id}>{tag.titulo}</BotaoEstilizadoTag>)}
+            {tags.map(tag => <BotaoEstilizadoTag onClick={() => aoFiltrarPorTag(tag)} $ativo key={tag.id}>{tag.titulo}</BotaoEstilizadoTag>)}
         </ContainerBotaoEstilizado>
     );
 }
