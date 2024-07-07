@@ -13,17 +13,30 @@ const FundoGradiente = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244f 48%, #154580 96.76%);
   width: 100%;
   min-height: 100vh;
+
+  @media (max-width: 744px) {
+    width: 100%;
+    
+  }
+
 `;
 
 const AppContainer = styled.div`
   width: 1440px;
   margin: 0 auto;
   max-width: 100%;
+  @media (max-width: 744px) {
+    width:100%;
+  }
 `;
 
 const MainContainer = styled.main`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 744px) {
+    display: block;
+  }
 `;
 
 const ConteudoDaGaleria = styled.section`
@@ -40,11 +53,11 @@ const App = () => {
   const [valorInput, setValorInput] = useState('')
 
   const aoDigitar = (evento) => {
-      setValorInput(() => evento.target.value)
-      let idTagInput = tags.find(tag => tag.titulo.toLowerCase().includes(valorInput.toLowerCase()));
-      
-      setTagSelecionada(idTagInput ? idTagInput : { id : 0 });
-      
+    setValorInput(() => evento.target.value)
+    let idTagInput = tags.find(tag => tag.titulo.toLowerCase().includes(valorInput.toLowerCase()));
+
+    setTagSelecionada(idTagInput ? idTagInput : { id: 0 });
+
   }
 
   useEffect(() => {
@@ -76,7 +89,7 @@ const App = () => {
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho aoDigitar={aoDigitar}/>
+        <Cabecalho aoDigitar={aoDigitar} />
         <MainContainer>
           <BarraLateral />
           <ConteudoDaGaleria>

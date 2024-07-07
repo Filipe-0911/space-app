@@ -15,7 +15,7 @@ const SecaoFluida = styled.section`
 const DivGaleriaEstilizada = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 0.5em;
 `
 
 const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito, aoFiltrarPorTag }) => {

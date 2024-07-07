@@ -8,6 +8,13 @@ const BotaoIcone = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+    @media (max-width: 744px) {
+        & > img {
+            width: 16px;
+            
+        }
+    }
 `
 
 export default BotaoIcone
