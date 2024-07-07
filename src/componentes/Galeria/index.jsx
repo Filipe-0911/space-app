@@ -16,6 +16,10 @@ const DivGaleriaEstilizada = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
+
+    @media (max-width:820px) {
+        justify-content: space-evenly;
+    }
 `
 
 const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito, aoFiltrarPorTag }) => {

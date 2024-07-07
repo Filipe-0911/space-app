@@ -8,7 +8,7 @@ const ContainerBotaoEstilizado = styled.div`
     gap:24px;
     color: #D9D9D9;
     line-height: 28.8px;
-    @media (max-width: 744px) {
+    @media (max-width: 1024px) {
         font-size: 14px;
     }
 
@@ -34,7 +34,7 @@ const BotaoEstilizadoTag = styled.button`
       border-color: var(--cor-gradiente);
     }
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         height: 20px;
     }
 `

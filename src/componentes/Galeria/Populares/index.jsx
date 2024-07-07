@@ -6,7 +6,7 @@ const ImagemPopularesEstilizada = styled.img`
     border: 1px solid transparent;
     border-radius: 20px;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         width: 200px;
     }
 `
@@ -25,7 +25,7 @@ const BotaoPopularesEstilizado = styled.button`
     border: 1px solid #C98CF1;
     border-radius: 10px;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         font-size: 14px;
     }
 `

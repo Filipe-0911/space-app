@@ -5,8 +5,9 @@ const TituloEstilizado = styled.h2`
     font-size: 32px;
     text-align:${props => props.$alinhamento ? props.$alinhamento : 'left'};
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         font-size: 22px;
+        text-align: center;
     }
 `;
 

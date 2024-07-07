@@ -1,6 +1,5 @@
 import { styled } from "styled-components"
 import search from '/imagens/search.png';
-import { useState } from "react";
 
 const ContainerEstilizado = styled.div`
     position: relative;
@@ -22,7 +21,7 @@ const CampoTextoEstilizado = styled.input`
     font-size: 20px;
     line-height: 20px;
 
-    @media (max-width:744px) {
+    @media (max-width:820px) {
         width: 100%;
     }
 `

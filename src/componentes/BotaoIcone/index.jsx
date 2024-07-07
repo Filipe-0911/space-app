@@ -9,7 +9,7 @@ const BotaoIcone = styled.button`
     border: none;
     cursor: pointer;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         & > img {
             width: 16px;
             

@@ -11,7 +11,7 @@ const ItemListaEstilizado = styled.li`
     align-items: center;
     gap: 1em;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         gap: 5px;
         font-size: 14px;
         width: 100%;

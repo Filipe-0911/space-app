@@ -29,7 +29,7 @@ const Figure = styled.figure`
         }
     }
 
-    @media (max-width:744px) {
+    @media (max-width:820px) {
         width: ${props => props.$expandida ? '90%' : '200px'};
 
         figcaption h3, figcaption h4 {
@@ -46,7 +46,7 @@ const Rodape = styled.footer`
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         padding: 0;
     }
 `

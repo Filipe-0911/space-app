@@ -7,7 +7,7 @@ const ListaEstilizada = styled.ul`
     margin: 0;
     width: 220px;
 
-    @media (max-width: 744px) {
+    @media (max-width: 820px) {
         display: flex;
         width: 100%;
     }

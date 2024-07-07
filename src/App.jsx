@@ -14,7 +14,7 @@ const FundoGradiente = styled.div`
   width: 100%;
   min-height: 100vh;
 
-  @media (max-width: 744px) {
+  @media (max-width: 820px) {
     width: 100%;
     
   }
@@ -25,7 +25,7 @@ const AppContainer = styled.div`
   width: 1440px;
   margin: 0 auto;
   max-width: 100%;
-  @media (max-width: 744px) {
+  @media (max-width: 820px) {
     width:100%;
   }
 `;
@@ -34,7 +34,7 @@ const MainContainer = styled.main`
   display: flex;
   gap: 24px;
 
-  @media (max-width: 744px) {
+  @media (max-width: 820px) {
     display: block;
   }
 `;
